@@ -66,6 +66,9 @@
 
 
     function displaystillGIFS() {
+
+        $("#gifs-appear-here").empty();
+
         // Figure out why this works
         var something = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + something + "&api_key=dc6zaTOxFJmzC&limit=10";
@@ -95,7 +98,7 @@
             $("#gifs-appear-here").prepend(gifDiv);
 
 
-            $(personImage).on("click", function displayactiveGIFS () {
+            $(this).on("click", function displayactiveGIFS () {
                 
                 for (var i = 0; i < results.length; i++) {
                 var gifDiv = $("<div class='item'>");
@@ -105,12 +108,12 @@
                 var p = $("<p>").text("Rating: " + rating);
 
                 var personImage = $("<img>");
-                personImage.attr("src", results[i].images.fixed_height.url);
+                this.attr("src", results[i].images.fixed_height.url);
 
                 gifDiv.prepend(p);
                 gifDiv.prepend(personImage);
 
-                $("#gifs-appear-here").prepend(gifDiv);
+                $("#gifs-appear-here").html(gifDiv);
 
             }})
 
