@@ -8,13 +8,14 @@
 
 <body>
 
-<h1> Options! </h1>
+<h1> Music Icons! </h1>
+<h3> Add your favorites </h3>
 
 <div id="more-buttons"></div>
 <br>
 
 <form id="movie-form">
-    <label for="movie-input"> Add a Topic! </label>
+    <label for="movie-input"> Add a Musician! </label>
     <input type="text" id="topic-input">
 <br><br>
 
@@ -32,7 +33,7 @@
 
 
 // Creat initial buttons
-    var initialButtons = ["Cat", "Dog", "Bird", "Cow"];
+    var initialButtons = ["Beyonce", "Selena", "Cher", "Michael Jackson"];
 
     function renderInitialButtons () {
 
@@ -86,7 +87,7 @@
             var p = $("<p>").text("Rating: " + rating);
 
             var personImage = $("<img>");
-            personImage.attr("src", results[i].images.fixed_height.url);
+            personImage.attr("src", results[i].images.fixed_height_still.url);
 
             gifDiv.prepend(p);
             gifDiv.prepend(personImage);
@@ -94,14 +95,9 @@
             $("#gifs-appear-here").prepend(gifDiv);
             }
 
-        })
-
-
-    }
-
-
-
-
+        }
+        
+        )}
 
 
 
