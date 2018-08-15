@@ -1,0 +1,18 @@
+/* body {
+    background-image: url(images/stripes-light.png);
+} */
+
+#Title {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 70px;
+}
+
+.topic-btn {
+    background-color: white;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+

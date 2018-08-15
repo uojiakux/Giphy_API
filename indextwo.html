@@ -3,12 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Assignment 5</title>
+    <title>Giphy API</title>
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
 
-    <h1> Music Icons! </h1>
+    <h1 id="Title"> Music Icons! </h1>
     <h3> Add your favorites </h3>
 
     <div id="more-buttons"></div>
@@ -29,95 +31,8 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" src="javascript.js"></script>
 
-
-        // Creat initial buttons
-        var initialButtons = ["Beyonce", "Selena", "Cher", "Michael Jackson"];
-
-        function renderInitialButtons() {
-
-            $("#more-buttons").empty();
-
-            for (var i = 0; i < initialButtons.length; i++) {
-                var button = $("<button>");
-                button.addClass("topic-btn");
-                button.attr("data-name", initialButtons[i]);
-                button.text(initialButtons[i]);
-                $("#more-buttons").append(button);
-
-            }
-        }
-
-
-        $("#add-topic").on("click", function (event) {
-
-            event.preventDefault();
-            var input = $("#topic-input").val().trim();
-            initialButtons.push(input);
-            renderInitialButtons();
-
-        });
-
-
-        function displaystillGIFS() {
-
-            var something = $(this).attr("data-name");
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + something + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-            $("#gifs-appear-here").empty();
-
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function (response) {
-                console.log(response);
-
-                var results = response.data;
-
-                for (var i = 0; i < results.length; i++) {
-                    var gifDiv = $("<div class='item'>");
-
-                    var rating = results[i].rating;
-
-                    var p = $("<p>").text("Rating: " + rating);
-
-                    var personImage = $("<img>");
-                    personImage.attr("src", results[i].images.fixed_height_still.url);
-
-                    personImage.attr("data-active", results[i].images.fixed_height.url);
-
-
-                    gifDiv.prepend(p);
-                    gifDiv.prepend(personImage);
-
-                    $("#gifs-appear-here").prepend(gifDiv);
-
-
-                    $(personImage).on("click", function displayactiveGIFS(event) {
-           
-                            $(this).attr("src", $(this).attr("data-active"));
-                            
-
-                    })
-
-                }
-
-            })
-        }
-
-
-
-        // Adding a click event listener to all elements with a class of "topic-btn"
-        $(document).on("click", ".topic-btn", displaystillGIFS);
-
-
-        renderInitialButtons();
-
-
-
-
-    </script>
 
 
 </body>
