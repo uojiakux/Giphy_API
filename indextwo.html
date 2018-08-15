@@ -20,7 +20,6 @@
         <br>
         <br>
 
-        <!-- Button triggers new movie to be added -->
         <input id="add-topic" type="submit" value="Submit">
     </form>
     <br>
@@ -38,8 +37,6 @@
 
         function renderInitialButtons() {
 
-            // Deleting the buttons prior to adding new buttons
-            // (this is necessary otherwise we will have repeat buttons)
             $("#more-buttons").empty();
 
             for (var i = 0; i < initialButtons.length; i++) {
@@ -54,25 +51,21 @@
 
 
         $("#add-topic").on("click", function (event) {
-            // Preventing the buttons default behavior when clicked (which is submitting a form)
+
             event.preventDefault();
-
             var input = $("#topic-input").val().trim();
-
             initialButtons.push(input);
-
             renderInitialButtons();
 
         });
 
 
         function displaystillGIFS() {
-            // Figure out why this works
+
             var something = $(this).attr("data-name");
             var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + something + "&api_key=dc6zaTOxFJmzC&limit=10";
 
             $("#gifs-appear-here").empty();
-
 
             $.ajax({
                 url: queryURL,
@@ -102,26 +95,10 @@
 
 
                     $(personImage).on("click", function displayactiveGIFS(event) {
-                        // console.log(event)
-                        // console.log(this)
-                        // for (var i = 0; i < results.length; i++) {
-                        //     var gifDiv = $("<div class='item'>");
-
-                        //     var rating = results[i].rating;
-
-                        //     var p = $("<p>").text("Rating: " + rating);
-
-                        //     personImage = $("<img>");
-                        console.log(i);
+           
                             $(this).attr("src", $(this).attr("data-active"));
                             
 
-                            //gifDiv.prepend(p);
-                            //gifDiv.prepend(personImage);
-
-                            //$("#gifs-appear-here").prepend(gifDiv);
-
-                        //}
                     })
 
                 }
@@ -131,7 +108,7 @@
 
 
 
-        // Adding a click event listener to all elements with a class of "movie-btn"
+        // Adding a click event listener to all elements with a class of "topic-btn"
         $(document).on("click", ".topic-btn", displaystillGIFS);
 
 
